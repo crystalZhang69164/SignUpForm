@@ -15,18 +15,15 @@ public class FormActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        TextView txtView;
-        final TextView email;
-        final TextView username;
-        final TextView password;
-        final TextView confirmPW;
+        //TextView txtView;
+
         Button button;
 
 
-        email = findViewById(R.id.textViewEmail);
-        username = findViewById(R.id.txtViewUserName);
-        password = findViewById(R.id.textViewPW);
-        confirmPW = findViewById(R.id.textViewPWConfirm);
+        final TextView email = findViewById(R.id.editTextEmail);
+        final TextView username = findViewById(R.id.editTextUsername);
+        final TextView password = findViewById(R.id.editTextPassword);
+        final TextView confirmPW = findViewById(R.id.editTextConfirmPass);
         button = findViewById(R.id.btnSave);
 
 
@@ -36,16 +33,27 @@ public class FormActivity extends AppCompatActivity {
         View.OnClickListener ocl = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (email.getText().equals("")) {
+                //if email is blank
+                if (email.getText().toString().equals("")) {
                     Toast.makeText(FormActivity.this, "Please enter an email", Toast.LENGTH_LONG).show();
-                } else if (username.getText().equals("")) {
+                }
+                //if username is blank
+                else if (username.getText().equals("")) {
                     Toast.makeText(FormActivity.this, "Please enter a valid username", Toast.LENGTH_LONG).show();
-                } else if (password.getText().equals("")) {
+                }
+                //if password is blank
+                else if (password.getText().toString().equals("")) {
                     Toast.makeText(FormActivity.this, "Please enter a password", Toast.LENGTH_LONG).show();
-                } else if (confirmPW.getText() != password.getText() && confirmPW.getText()!= "") {
+                }
+                //if password doesn't = confirm password
+                else if (!password.getText().toString().equals(confirmPW.getText().toString())) {
                     Toast.makeText(FormActivity.this, "Error passwords don't match", Toast.LENGTH_LONG).show();
                 }
-                
+                else{
+                    //lets user know they have signed up
+                    Toast.makeText(FormActivity.this,"Welcome " + username.getText() + " you have signed up!",Toast.LENGTH_LONG).show();
+                }
+
 
             }
         };
@@ -54,6 +62,5 @@ public class FormActivity extends AppCompatActivity {
 
     }
 
-    private class onClickListener {
-    }
+
 }
