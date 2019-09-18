@@ -45,7 +45,7 @@ public class FormActivity extends AppCompatActivity {
                 } else if (confirmPW.getText() != password.getText() && confirmPW.getText()!= "") {
                     Toast.makeText(FormActivity.this, "Error passwords don't match", Toast.LENGTH_LONG).show();
                 }
-                //boo
+                
 
             }
         };
